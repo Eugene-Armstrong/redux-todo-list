@@ -5,11 +5,9 @@ import "../App.css";
 class TodoItem extends Component {
   constructor(props) {
     super(props);
-    this.setEditable = this.setEditable.bind(this);
-    this.setUnEditable = this.setUnEditable.bind(this);
   }
 
-  changeToEditable() {
+  changeToEditable=()=> {
     this.props.changeStatusHandler("write");
   }
 
@@ -26,12 +24,12 @@ class TodoItem extends Component {
     this.props.toggleActiveHandler(viewId);
   }
 
-  setEditable(e){
+  setEditable=(e)=>{
     e.target.setAttribute("contentEditable",true);
     e.target.focus();
   }
 
-  setUnEditable(e){
+  setUnEditable=(e)=>{
     e.target.setAttribute("contentEditable",false);
   }
 
@@ -40,7 +38,8 @@ class TodoItem extends Component {
     return (
       <li className={item.status}
           onDoubleClick={this.setEditable}
-          onBlur={this.setUnEditable}>
+          onBlur={this.setUnEditable}
+      >
         {
           <input
             type="checkbox"

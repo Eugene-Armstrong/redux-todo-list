@@ -14,13 +14,19 @@ class AddItem extends Component {
 
   add(event) {
     // if (event.keyCode === 13) {
-    todosAPI.add(new Todo(this.refs.newItem.value));
-    const todos = this.deepCopy(
-      todosAPI.filerByStatus(this.props.statusOfList)
-    );
-    this.props.addHandler(todos);
-    this.refs.newItem.value = "";
-    console.log(this.props.todos);
+    let content = this.refs.newItem.value;
+    if(content!==""){
+      todosAPI.add(new Todo(this.refs.newItem.value));
+      const todos = this.deepCopy(
+        todosAPI.filerByStatus(this.props.statusOfList)
+      );
+      this.props.addHandler(todos);
+      this.refs.newItem.value = "";
+      console.log(this.props.todos);
+    }else{
+      alert("添加项不能为空！");
+    }
+
     // }
   }
 
