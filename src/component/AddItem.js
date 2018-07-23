@@ -21,17 +21,16 @@ class AddItem extends Component {
     // if (event.keyCode === 13) {
     let content = this.refs.newItem.value;
     if(content!==""){
-      todosAPI.add(new Todo(this.refs.newItem.value));
+      // todosAPI.add(new Todo(content));
       const todos = this.deepCopy(
         todosAPI.filerByStatus(this.props.statusOfList)
       );
-      this.props.addHandler(todos);
+      this.props.addHandler(new Todo(content),this.props.statusOfList);
       this.refs.newItem.value = "";
       console.log(this.props.todos);
     }else{
       info();
     }
-
     // }
   }
 
