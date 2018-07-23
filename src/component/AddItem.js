@@ -36,13 +36,11 @@ class AddItem extends Component {
   }
 
   render() {
-    const myStyle={"width":"290px","margin-bottom":"20px"};
     return (
       <div>
         <input
           className="input-text"
           placeholder="请输入添加项"
-          style={myStyle}
           // onKeyUp={e => this.add(e)}
           id="todo-creator"
           ref="newItem"

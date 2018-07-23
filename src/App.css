@@ -45,6 +45,7 @@ body {
 }
 
 .input-text {
+  width:290px;margin-bottom:20px;
   width: 80%;
 }
 
