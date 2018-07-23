@@ -4,9 +4,9 @@ import todosAPI from "../api/TodoResourseAPI";
 import ToDoItemContainer from "../container/ToDoItemContainer";
 
 class ShowItemList extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   toggleActive(viewId) {
     todosAPI.toggleActive(viewId);

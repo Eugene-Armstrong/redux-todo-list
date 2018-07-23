@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import Todo from "../model/Todo";
 import todosAPI from "../api/TodoResourseAPI";
 import "../App.css";
+import { Button,message} from 'antd';
+
+const info = () => {
+  message.error('添加项不能为空！',1);
+};
 
 class AddItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   deepCopy(array) {
     return JSON.parse(JSON.stringify(array));
@@ -24,24 +29,27 @@ class AddItem extends Component {
       this.refs.newItem.value = "";
       console.log(this.props.todos);
     }else{
-      alert("添加项不能为空！");
+      info();
     }
 
     // }
   }
 
   render() {
+    const myStyle={"width":"290px","margin-bottom":"20px"};
     return (
       <div>
         <input
           className="input-text"
+          placeholder="请输入添加项"
+          style={myStyle}
           // onKeyUp={e => this.add(e)}
           id="todo-creator"
           ref="newItem"
         />
-        <div className="button" onClick={e => this.add()}>
+        <Button type="primary" onClick={e => this.add()} style={{"margin-left":"5px"}}>
           Add
-        </div>
+        </Button>
       </div>
     );
   }

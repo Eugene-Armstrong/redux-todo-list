@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Todo from "../model/Todo";
+import { Checkbox } from 'antd';
 import "../App.css";
-
 class TodoItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   changeToEditable=()=> {
     this.props.changeStatusHandler("write");
@@ -41,12 +41,10 @@ class TodoItem extends Component {
           onBlur={this.setUnEditable}
       >
         {
-          <input
-            type="checkbox"
-            className="done-todo"
+          <Checkbox
             defaultChecked={item.status === Todo.COMPLETED}
             onClick={e => this.toggleActive(item.viewId)}
-          />
+          ></Checkbox>
         }
         <span onDoubleClick={e => this.changeToEditable(e)}>
           {this.props.status === "read" ? (
@@ -66,5 +64,4 @@ class TodoItem extends Component {
     );
   }
 }
-
 export default TodoItem;

@@ -3,11 +3,12 @@ import Todo from "../model/Todo";
 import "../App.css";
 import classNames from "classnames";
 import todosAPI from "../api/TodoResourseAPI";
+import { Button } from 'antd';
 
 class FilterItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   showFilterList(event) {
     console.log(this.props.todos);
@@ -27,8 +28,7 @@ class FilterItem extends Component {
       <div>
         <ul className="filters">
           <li>
-            <a
-              href="#all"
+            <Button
               onClick={e => this.showFilterList(e)}
               data-filter="all"
               className={classNames({
@@ -36,11 +36,10 @@ class FilterItem extends Component {
               })}
             >
               ALL
-            </a>
+            </Button>
           </li>
           <li>
-            <a
-              href="#active"
+            <Button
               onClick={e => this.showFilterList(e)}
               data-filter="active"
               className={classNames({
@@ -48,11 +47,10 @@ class FilterItem extends Component {
               })}
             >
               Active
-            </a>
+            </Button>
           </li>
           <li>
-            <a
-              href="#completed"
+            <Button
               onClick={e => this.showFilterList(e)}
               data-filter="completed"
               className={classNames({
@@ -60,7 +58,7 @@ class FilterItem extends Component {
               })}
             >
               Complete
-            </a>
+            </Button>
           </li>
         </ul>
       </div>

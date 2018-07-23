@@ -1,4 +1,15 @@
 import Todo from '../model/Todo';
+import {addItem,showFilterList,updateItemContent,toggleActiveItem,changeStatus} from '../actions'
+import axios from 'axios';
+
+// axios.get("http://localhost:8080/api/todos")
+//   .then((response) =>{
+//     allTodos = response.data._embedded.todos;
+//     console.info(allTodos);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
 
 const todosAPI = {
   todos: [],
@@ -25,3 +36,4 @@ const todosAPI = {
   }
 };
 export default todosAPI;
+
