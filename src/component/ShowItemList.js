@@ -22,7 +22,7 @@ class ShowItemList extends Component {
     const todos = this.deepCopy(
       todosAPI.filerByStatus(this.props.statusOfList)
     );
-    this.props.updateItemContentHandler(todos, this.props.statusOfList);
+    this.props.updateItemContentHandler(viewId,content, this.props.statusOfList);
   }
 
   deepCopy(array) {

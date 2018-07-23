@@ -1,25 +1,7 @@
 import Todo from '../model/Todo';
-import {addItem,showFilterList,updateItemContent,toggleActiveItem,changeStatus} from '../actions'
-import axios from 'axios';
-
-
 
 const todosAPI = {
   todos: [],
-
-  // init(dispatch){
-  //   axios.get("http://localhost:8080/api/todos")
-  //     .then((response) =>{
-  //       this.todos = response.data._embedded.todos;
-  //       console.info(this.todos);
-  //       return this.todos;
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  //   dispatch()
-  // },
-
   add(item) {
     this.todos.push(item);
     return this.todos;

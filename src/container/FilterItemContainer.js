@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import FilterItem from "../component/FilterItem";
 import { showFilterList } from "../actions/index";
+import todosRemoteAPI from '../api/TodoRemoteAPI'
 
 const mapStateToProps = (state, ownProps) => ({
   todos: state.todos,
@@ -8,6 +9,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  filterHandler: (todos, statusOfList) => dispatch(showFilterList(todos, statusOfList))
+  filterHandler: (todos, statusOfList) => {
+    todosRemoteAPI.filerByStatus(statusOfList,todos=>{
+      dispatch(showFilterList(todos, statusOfList))
+    })
+
+  }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(FilterItem);
