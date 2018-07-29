@@ -19,9 +19,8 @@ class TodoItem extends Component {
     }
   }
 
-  toggleActive(viewId) {
-    this.props.changeStatusHandler("read");
-    this.props.toggleActiveHandler(viewId);
+  toggleActive(viewId, status) {
+    this.props.changeStatusHandler(viewId,status);
   }
 
   setEditable=(e)=>{
@@ -43,8 +42,8 @@ class TodoItem extends Component {
         {
           <Checkbox
             defaultChecked={item.status === Todo.COMPLETED}
-            onClick={e => this.toggleActive(item.viewId)}
-          ></Checkbox>
+            onClick={e => this.toggleActive(item.id,item.status)}
+          />
         }
         <span onDoubleClick={e => this.changeToEditable(e)}>
           {this.props.status === "read" ? (

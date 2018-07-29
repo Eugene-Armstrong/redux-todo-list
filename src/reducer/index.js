@@ -29,10 +29,7 @@ export default (state = { todos: [], statusOfList: Todo.ALL, status: "read" }, a
       newState.status = action.status;
       return newState;
     }
-
     default:
       return state;
   }
-
-
 }

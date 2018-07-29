@@ -1,66 +1,63 @@
 import React, { Component } from "react";
-import Todo from "../model/Todo";
 import "../App.css";
-import classNames from "classnames";
-import todosAPI from "../api/TodoResourseAPI";
-import { Button } from 'antd';
+import { Link, Route } from 'react-router-dom';
+import ShowItemListContainer from '../container/ShowItemListContainer';
 
 class FilterItem extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
 
   showFilterList(event) {
     console.log(this.props.todos);
     const statusOfList = event.target.attributes.getNamedItem("data-filter")
       .value;
-    const todos = this.deepCopy(todosAPI.filerByStatus(statusOfList));
-    this.props.filterHandler(todos, statusOfList);
-
-  }
-
-  deepCopy(array) {
-    return JSON.parse(JSON.stringify(array));
+    this.props.filterHandler(statusOfList);
   }
 
   render() {
+    let match = this.props.match;
     return (
       <div>
         <ul className="filters">
           <li>
-            <Button
+            <Link
+              to={`${match.url}?status=completed,active`}
               onClick={e => this.showFilterList(e)}
               data-filter="all"
-              className={classNames({
-                selected: this.props.statusOfList === Todo.ALL
-              })}
+              // className={classNames({
+              //   selected: this.props.statusOfList === Todo.ALL
+              // })}
             >
               ALL
-            </Button>
+            </Link>
           </li>
           <li>
-            <Button
+            <Link
+              to={`${match.url}?status=active`}
               onClick={e => this.showFilterList(e)}
               data-filter="active"
-              className={classNames({
-                selected: this.props.statusOfList === Todo.ACTIVE
-              })}
+              // className={classNames({
+              //   selected: this.props.statusOfList === Todo.ACTIVE
+              // })}
             >
               Active
-            </Button>
+            </Link>
           </li>
           <li>
-            <Button
+            <Link
+              to={`${match.url}?status=completed`}
               onClick={e => this.showFilterList(e)}
               data-filter="completed"
-              className={classNames({
-                selected: this.props.statusOfList === Todo.COMPLETED
-              })}
+              // className={classNames({
+              //   selected: this.props.statusOfList === Todo.COMPLETED
+              // })}
             >
               Complete
-            </Button>
+            </Link>
           </li>
         </ul>
+        <Route
+          path={`${match.url}/:topicId`}
+          component={ShowItemListContainer}
+        />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import AddItem from "../component/AddItem";
-import { addItem } from "../actions/index";
-import todosRemoteAPI from '../api/TodoRemoteAPI'
+import Todo from '../model/Todo';
+import todosAPI from '../api/TodoResourseAPI'
 
 const mapStateToProps = (state, ownProps) => ({
   todos: state.todos,
@@ -9,12 +9,11 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  addHandler: (item,statusOfList) => {
-    todosRemoteAPI.add(item,function(todos){
-      todosRemoteAPI.get(function(todos){
-        dispatch(addItem(todos))
-      })
-    })
+  addHandler: (content, statusOfList) => {
+    todosAPI.add(new Todo(content), statusOfList, dispatch);
+  },
+  filterHandler: statusOfList => {
+    todosAPI.filerByStatus(statusOfList, dispatch);
   }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);
